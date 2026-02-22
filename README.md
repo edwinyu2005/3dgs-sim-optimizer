@@ -32,8 +32,22 @@ This tool operates at the pre-processing stage (CPU/RAM bound) before assets are
 
 ## 🛠️ Quick Start
 
+### Environment Setup
+Run the setup script to automatically create a virtual environment and install dependencies:
+```bash
+chmod +x setup.sh
+./setup.sh
+source venv/bin/activate
+```
+
 ### 1. Python Prototype (Fast Validation)
 ```bash
 cd python_prototype
 pip install -r requirements.txt
 python gaussian_pruner.py --input ../data/chess_raw.ply --output ../data/chess_optimized.ply
+```
+
+### 2: SH Point Cloud Extractor (`sh_extractor.py`)
+Extracts the 0th-order Direct Current (DC) components from the Spherical Harmonics matrix to reconstruct standard diffuse RGB values. This enables down-converting the complex 3DGS structure into a standard 3D point cloud for traditional physics engines and visual inspection.
+
+![Chess Endgame Point Cloud Visualization](docs/chess_viz_example.png)
