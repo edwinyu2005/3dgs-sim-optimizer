@@ -1,6 +1,9 @@
 # Editor / IDE
 .vscode/
 
+# Virtual Environments
+*venv/
+
 # Python Artifacts
 __pycache__/
 *.py[cod]
@@ -10,3 +13,4 @@ build/
 
 # Data & Large Files
 *.ply
+*.html
