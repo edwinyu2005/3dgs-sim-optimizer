@@ -1,1 +1,12 @@
+# Editor / IDE
+.vscode/
+
+# Python Artifacts
+__pycache__/
+*.py[cod]
+
+# C++ Build Directories
+build/
+
+# Data & Large Files
 *.ply
