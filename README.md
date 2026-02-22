@@ -25,9 +25,9 @@ This tool operates at the pre-processing stage (CPU/RAM bound) before assets are
 ## 📊 Performance Metrics (Example: Chess Endgame Scene)
 | Metric | Raw Asset (`.ply`) | Optimized Asset | Reduction |
 | :--- | :--- | :--- | :--- |
-| **File Size** | ~150 MB | ~85 MB | **~43%** |
-| **Gaussian Count** | 2.5 Million | 1.4 Million | **~44%** |
-| **VRAM Footprint** | ~500 MB | ~280 MB | **~44%** |
+| **File Size** | ~161.6 MB | ~99.8 MB | **~38.3%** |
+| **Gaussian Count** | 683.3 K | 421.9 K | **~38.3%** |
+| **VRAM Footprint** | ~161.6 MB | ~99.8 MB | **~38.3%** |
 *Visual fidelity remains practically indistinguishable in standard WebGL/CUDA 3DGS rasterizers.*
 
 ## 🛠️ Quick Start
@@ -36,4 +36,4 @@ This tool operates at the pre-processing stage (CPU/RAM bound) before assets are
 ```bash
 cd python_prototype
 pip install -r requirements.txt
-(To be continued ...)
+python gaussian_pruner.py --input ../data/chess_raw.ply --output ../data/chess_optimized.ply
