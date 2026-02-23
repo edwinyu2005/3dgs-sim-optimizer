@@ -2,6 +2,7 @@ import argparse
 import numpy as np
 import os
 from plyfile import PlyData, PlyElement
+import time
 
 
 def get_file_size_mb(filepath):
@@ -10,6 +11,9 @@ def get_file_size_mb(filepath):
 
 
 def optimize_3dgs_ply(input_path, output_path, opacity_threshold=0.05):
+    # Start the high-resolution timer
+    start_time = time.perf_counter()
+
     print(f"Loading {input_path}...")
 
     # 1. Read the raw PLY data
@@ -43,6 +47,10 @@ def optimize_3dgs_ply(input_path, output_path, opacity_threshold=0.05):
 
     optimized_file_mb = get_file_size_mb(output_path)
 
+    # Stop the timer
+    end_time = time.perf_counter()
+    elapsed_time = end_time - start_time
+
     # 6. Calculate reductions
     count_reduction = (1 - num_optimized / num_original) * 100
     size_reduction = (1 - optimized_file_mb / original_file_mb) * 100
@@ -58,6 +66,9 @@ def optimize_3dgs_ply(input_path, output_path, opacity_threshold=0.05):
     print(f"{'Gaussian Count':<22} | {num_original:>11,} | {num_optimized:>12,} | {count_reduction:>7.2f}%")
     print(f"{'VRAM Footprint (Est)':<22} | {original_vram_mb:>8.2f} MB | {optimized_vram_mb:>9.2f} MB | {vram_reduction:>7.2f}%")
     print("="*65 + "\n")
+
+    # Print the final execution time to match the C++ output
+    print(f"Optimization complete in {elapsed_time:.4f} seconds.\n")
 
 
 if __name__ == "__main__":
